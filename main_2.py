@@ -59,7 +59,7 @@ async def scheduled():
             }
 
             # get list of subs with status = TRUE
-            subscriptions = db.get_subscriptions()  # return this - [(2, '431733517', 1)]
+            subscriptions = db.get_subscriptions()  # return this - [(2, 'id', 1)]
 
             # send message
             for s in subscriptions:
@@ -69,7 +69,7 @@ async def scheduled():
                     'text': 'test message'
                 }
 
-                API_URL = 'https://api.telegram.org/bot5646936515:AAEnCioBeqCOzjy7zbX4o9Kna9VWV3agdBM/sendMessage'
+                API_URL = f'https://api.telegram.org/bot{token}/sendMessage'
 
                 async with session.post(API_URL, data=json.dumps(message), headers=headers) as resp:
                     try:
